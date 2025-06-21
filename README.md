@@ -1,175 +1,198 @@
 # Rehearsal Scheduler
 
-A comprehensive web application for bands to schedule rehearsals, track attendance, and optimize practice time.
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Socket.io](https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101)
 
-## 🎵 Overview
+## Overview
 
-Rehearsal Scheduler is a specialized tool designed to solve the common challenges musicians face when coordinating practice sessions. The application streamlines the entire rehearsal process, from finding optimal practice times to tracking progress and managing resources.
+Rehearsal Scheduler is a comprehensive web application designed to help bands and musical groups efficiently schedule rehearsals, track attendance, and optimize practice time. This application solves the common challenges musicians face when coordinating practice sessions.
 
-## ✨ Features
+## 🎵 Key Features
 
 ### Core Features
-
-- **Shared Calendar System**: View and manage rehearsal schedules in an intuitive calendar interface with personal calendar integration
-- **Availability Management**: Poll band members for availability and get intelligent suggestions for optimal rehearsal times
-- **Notification System**: Automatic reminders and customizable notifications about schedule changes
-- **Attendance Tracking**: Track attendance patterns and generate reports
-- **Setlist Management**: Create and share setlists for specific rehearsals with time tracking
-- **Task Assignment**: Assign preparation tasks to ensure everyone comes prepared
-- **Venue Management**: Save venue details and track availability
+- **User Management**: Registration, authentication, and profile management
+- **Band Management**: Create and manage bands, invite members
+- **Calendar System**: Shared calendar with scheduling and conflict detection
+- **Rehearsal Management**: Detail pages, attendance tracking, notes
+- **Notification System**: Email and optional SMS notifications
+- **Venue Management**: Venue details, equipment, and booking history
 
 ### Advanced Features
-
-- **Smart Scheduling Algorithm**: Suggests optimal rehearsal times based on historical data and member preferences
-- **Progress Tracking**: Monitor rehearsal productivity and progress on songs over time
-- **Equipment Coordination**: Coordinate equipment needs for rehearsals
-- **Communication Hub**: Dedicated chat and resource sharing for each rehearsal
+- **Setlist Management**: Song organization and practice tracking
+- **Smart Scheduling**: Intelligent scheduling based on availability
+- **Integration Capabilities**: Calendar sync, third-party services
+- **Analytics**: Progress tracking, attendance trends, performance metrics
+- **Collaboration Tools**: Task assignment, resource sharing
 
 ## 🛠️ Technology Stack
 
 ### Frontend
-- React.js with TypeScript
-- Redux with Redux Toolkit
-- Material-UI for responsive design
-- FullCalendar.js for calendar visualization
-- Chart.js for attendance and progress visualization
+- **Framework**: React.js with Redux
+- **UI Library**: Material-UI for responsive design
+- **Calendar**: FullCalendar.js for calendar visualization
+- **Forms**: Formik with Yup for validation
 
 ### Backend
-- Node.js with Express
-- MongoDB for data storage
-- Socket.io for real-time updates
-- JWT authentication
-- SendGrid for email notifications
-- Twilio for SMS notifications (optional)
+- **Framework**: Node.js with Express
+- **Database**: MongoDB with Mongoose ODM
+- **Real-time**: Socket.io for live updates
+- **Authentication**: JWT-based authentication
+- **Notifications**: SendGrid (email) and Twilio (SMS)
 
 ### DevOps
-- Docker for containerization
-- AWS for hosting
-- GitHub Actions for CI/CD
-- MongoDB Atlas for database hosting
+- **Containerization**: Docker and Docker Compose
+- **Deployment**: AWS ready
 
-## 📱 Mobile Support
+## 📋 Prerequisites
 
-- Responsive web design with Progressive Web App capabilities
-- Future expansion: Native mobile applications using React Native
-
-## 📋 Requirements
-
-- Node.js (v18+)
-- MongoDB (v5+)
-- npm or yarn
-- Modern web browser
+- Node.js (v18 or later)
+- MongoDB (v4.4 or later)
+- Docker and Docker Compose (for containerized deployment)
 
 ## 🚀 Getting Started
 
-### Installation
+### Using Docker (Recommended)
 
-1. Clone the repository
+1. Clone the repository:
    ```bash
    git clone https://github.com/dxaginfo/rehearsal-scheduler-20250621.git
    cd rehearsal-scheduler-20250621
    ```
 
-2. Install dependencies
-   ```bash
-   # Install backend dependencies
-   cd backend
-   npm install
-
-   # Install frontend dependencies
-   cd ../frontend
-   npm install
+2. Create `.env` file in the project root with the following variables:
+   ```
+   MONGO_ROOT_USER=admin
+   MONGO_ROOT_PASSWORD=your_secure_password
+   MONGO_DB=rehearsal-scheduler
+   JWT_SECRET=your_jwt_secret_key
+   JWT_EXPIRE=30d
+   CLIENT_URL=http://localhost:3000
+   API_PORT=5000
+   CLIENT_PORT=3000
    ```
 
-3. Set up environment variables
-   ```bash
-   # In the backend directory, create a .env file with the following:
-   PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/rehearsal-scheduler
-   JWT_SECRET=your_jwt_secret
-   SENDGRID_API_KEY=your_sendgrid_api_key
-   ```
-
-4. Start development servers
-   ```bash
-   # Start backend server
-   cd backend
-   npm run dev
-
-   # Start frontend server in a new terminal
-   cd frontend
-   npm start
-   ```
-
-5. Open your browser and navigate to `http://localhost:3000`
-
-### Docker Setup
-
-1. Build and run using Docker Compose
+3. Start the application:
    ```bash
    docker-compose up -d
    ```
 
-2. Access the application at `http://localhost:3000`
+4. Access the application at `http://localhost:3000`
 
-## 🏗️ Project Structure
+### Manual Setup
+
+#### Backend Setup
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create `.env` file with the following variables:
+   ```
+   NODE_ENV=development
+   PORT=5000
+   MONGODB_URI=mongodb://localhost:27017/rehearsal-scheduler
+   JWT_SECRET=your_jwt_secret_key
+   JWT_EXPIRE=30d
+   CLIENT_URL=http://localhost:3000
+   ```
+
+4. Start the backend server:
+   ```bash
+   npm run dev
+   ```
+
+#### Frontend Setup
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create `.env` file:
+   ```
+   REACT_APP_API_URL=http://localhost:5000/api
+   ```
+
+4. Start the frontend development server:
+   ```bash
+   npm start
+   ```
+
+## 🌐 API Documentation
+
+API documentation is available at `/api/docs` when running the backend server.
+
+## 📐 Project Structure
 
 ```
 rehearsal-scheduler/
-├── backend/               # Express server
-│   ├── config/            # Configuration files
-│   ├── controllers/       # Request handlers
-│   ├── models/            # Mongoose models
-│   ├── routes/            # API routes
-│   ├── services/          # Business logic
-│   └── utils/             # Utility functions
-├── frontend/              # React application
+├── backend/               # Backend Node.js application
+│   ├── src/
+│   │   ├── controllers/   # Request handlers
+│   │   ├── middleware/    # Express middleware
+│   │   ├── models/        # Mongoose models
+│   │   ├── routes/        # API routes
+│   │   ├── utils/         # Utility functions
+│   │   └── index.js       # Entry point
+│   ├── .env               # Environment variables (create this)
+│   ├── package.json
+│   └── Dockerfile
+├── frontend/              # React frontend
 │   ├── public/            # Static files
-│   ├── src/               # Source code
-│   │   ├── assets/        # Images, fonts, etc.
+│   ├── src/
 │   │   ├── components/    # Reusable components
-│   │   ├── contexts/      # React contexts
-│   │   ├── hooks/         # Custom hooks
-│   │   ├── pages/         # Page components
-│   │   ├── redux/         # Redux store and slices
-│   │   ├── services/      # API service calls
-│   │   └── utils/         # Utility functions
+│   │   ├── layouts/       # Page layouts
+│   │   ├── pages/         # Application pages
+│   │   ├── redux/         # State management
+│   │   ├── utils/         # Utility functions
+│   │   └── App.js         # Main component
+│   ├── .env               # Environment variables (create this)
+│   ├── package.json
+│   └── Dockerfile
 ├── docker-compose.yml     # Docker Compose configuration
-├── Dockerfile.backend     # Backend Dockerfile
-└── Dockerfile.frontend    # Frontend Dockerfile
+└── README.md              # This file
 ```
 
-## 🔐 Security Features
+## 🔒 Security
 
 - JWT-based authentication with proper expiration
-- Role-based access control (member, leader, admin)
-- Password storage using bcrypt
-- HTTPS for all traffic
-- Input validation and sanitization
+- Secure password storage with bcrypt
+- Role-based access control
 - Rate limiting to prevent brute force attacks
+- HTTPS enforcement in production
 
-## 🌐 Integration Capabilities
+## 📱 Mobile Responsiveness
 
-- Google/Apple/Microsoft Calendar integration
-- Spotify integration for setlist creation
-- SoundCloud/YouTube integration for sharing reference tracks
-- Slack/Discord webhook integration for notifications
-- Dropbox/Google Drive integration for file sharing
+The application is designed with mobile responsiveness in mind, ensuring a seamless user experience across all devices.
 
-## 📊 Database Schema
+## 🧪 Testing
 
-The application uses MongoDB with the following main collections:
+Run tests with the following commands:
 
-- **Users**: Band members and administrators
-- **Bands**: Musical groups with members
-- **Rehearsals**: Scheduled practice sessions
-- **Attendance**: Tracking who attended which rehearsal
-- **Availability**: Member availability for scheduling
-- **Venues**: Practice and performance locations
-- **Setlists**: Songs for specific rehearsals
-- **Tasks**: Preparation tasks for rehearsals
+```bash
+# Backend tests
+cd backend
+npm test
 
-## 📜 License
+# Frontend tests
+cd frontend
+npm test
+```
+
+## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
@@ -185,4 +208,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📬 Contact
 
-Project Link: [https://github.com/dxaginfo/rehearsal-scheduler-20250621](https://github.com/dxaginfo/rehearsal-scheduler-20250621)
+For questions or support, please contact the project maintainer at [dxag.info@gmail.com](mailto:dxag.info@gmail.com).
+
+---
+
+Made with ❤️ for musicians
